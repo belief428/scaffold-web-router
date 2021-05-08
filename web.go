@@ -57,6 +57,6 @@ func (this *Web) Run(handler http.Handler) {
 
 func NewWeb() WebServer {
 	return func(config *WebConfig) *Web {
-		return &Web{}
+		return &Web{WebConfig: config}
 	}
 }
