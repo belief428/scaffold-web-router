@@ -9,12 +9,12 @@ import (
 )
 
 type Router struct {
-	Mode string
 	*RouterConfig
 }
 
 type (
 	RouterConfig struct {
+		Mode   string
 		IPRate bool `json:"ip_rate"`
 		*RouterIPLimitConfig
 	}
