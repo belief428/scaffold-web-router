@@ -27,10 +27,9 @@ func (this *Web) stop() {
 	go func() {
 		defer func() {
 			if err := recover(); err != nil {
-				err = fmt.Errorf("internal error: %v", err)
+				err = fmt.Errorf("internal error: %v\n", err)
 			}
 		}()
-		s := <-c
 		defer close(c)
 		signal.Stop(c)
 		fmt.Println("Http Server Stop")
