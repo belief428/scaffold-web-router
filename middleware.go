@@ -23,7 +23,6 @@ func NoMethodHandler() gin.HandlerFunc {
 			"msg":  "未找到请求路由的处理函数",
 		})
 		c.Abort()
-		return
 	}
 }
 
@@ -35,7 +34,6 @@ func NoRouteHandler() gin.HandlerFunc {
 			"msg":  "未找到请求路由的处理函数",
 		})
 		c.Abort()
-		return
 	}
 }
 
@@ -67,7 +65,6 @@ func RecoveryHandler() gin.HandlerFunc {
 					"msg":  "阿欧，服务器崩溃了！",
 				})
 				c.Abort()
-				return
 			}
 		}()
 		c.Next()
