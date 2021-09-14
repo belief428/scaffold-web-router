@@ -61,7 +61,7 @@ func RecoveryHandler() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		defer func() {
 			if err := recover(); err != nil {
-				fmt.Printf("Recover：request【%s】 error：【%v】", c.Request.URL, err)
+				fmt.Printf("Recover：request【%s】 error：【%v】\n", c.Request.URL, err)
 				c.JSON(http.StatusOK, gin.H{
 					"code": http.StatusInternalServerError,
 					"msg":  "阿欧，服务器崩溃了！",

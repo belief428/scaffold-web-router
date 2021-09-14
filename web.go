@@ -33,7 +33,7 @@ func (this *Web) stop() {
 		s := <-c
 		defer close(c)
 		signal.Stop(c)
-		fmt.Printf("Http Server Stop：Closed - %d\n", s)
+		fmt.Println("Http Server Stop")
 		os.Exit(0)
 	}()
 }

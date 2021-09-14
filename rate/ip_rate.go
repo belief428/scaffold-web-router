@@ -1,7 +1,6 @@
 package rate
 
 import (
-	"fmt"
 	"net/http"
 	"sync"
 
@@ -41,7 +40,7 @@ func (this *IPRateLimiter) Handle() AllowHandle {
 	}
 }
 
-// NewIPRateLimiter
+// NewIPRateLimiter 初始化限流器
 func NewIPRateLimiter() IPRateLimiterConfig {
 	return func(limit, capacity int) gin.HandlerFunc {
 		IPRateLimiterHandle = &IPRateLimiter{
@@ -58,11 +57,6 @@ func NewIPRateLimiter() IPRateLimiterConfig {
 func RequestIPRateLimiter() IPRateLimiterConfig {
 	return func(limit, capacity int) gin.HandlerFunc {
 		return func(c *gin.Context) {
-			defer func() {
-				if err := recover(); err != nil {
-					fmt.Printf("Recover：IPRateLimiter error：【%v】", err)
-				}
-			}()
 			if IPRateLimiterHandle == nil {
 				NewIPRateLimiter()(limit, capacity)
 			}
